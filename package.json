@@ -1,0 +1,17 @@
+{
+  "name": "pi-agent-core-learn",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lesson:01": "tsx examples/01-minimal.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "0.87.1",
+    "@earendil-works/pi-ai": "0.87.1"
+  },
+  "devDependencies": {
+    "tsx": "4.21.0",
+    "typescript": "7.0.2"
+  }
+}
