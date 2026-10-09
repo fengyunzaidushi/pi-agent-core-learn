@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "lesson:01": "tsx examples/01-minimal.ts",
+    "lesson:03": "tsx examples/03-context-boundary.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

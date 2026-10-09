@@ -17,6 +17,7 @@
 | `lessons/02-first-agent.md` | 初稿 | faux provider、`streamFn`、首个 Agent |
 | `lessons/03-events-and-transcript.md` | 初稿 | 事件与转录、Web 事件映射 |
 | `lessons/04-tools.md` | 初稿 | AgentTool、工具调用与执行策略 |
+| `lessons/05-context-boundary.md` | 已完成本轮初稿 | `AgentMessage`、`transformContext`、`convertToLlm` 与 provider transcript 边界 |
 | `examples/01-minimal.ts` | 已有离线示例 | `npm run lesson:01` |
 | `examples/02-tool-call.ts` | 已有离线示例 | `npm run lesson:02` |
 
@@ -24,13 +25,21 @@
 
 ## 下一步
 
-下一章讲 `AgentMessage`、`convertToLlm`、`transformContext` 与小说资料进入模型上下文的边界。写作前核对 `packages/agent/src/agent.ts`、`agent-loop.ts`、`types.ts` 及对应测试，加入可离线运行的第三个示例，并同步更新课程目录和命令。
+下一章讲多工具调用、并行执行、steering 和 follow-up。写作前核对 `packages/agent/src/agent-loop.ts` 的工具批次和队列路径，并加入一个可离线观察请求次数与消息顺序的示例。
+
+## 本轮验证
+
+- `npm run typecheck`：通过。
+- `npm run lesson:03`：通过；观察到 `transformContext -> convertToLlm -> provider` 的角色变化，注入资料没有写回转录。
+- `git diff --check`：通过。
+- 未调用真实 provider；未修改权威 Pi checkout。
 
 ## 已确认的教学边界
 
 - `pi-agent-core` 是运行时层；`pi-coding-agent` 包含终端产品与更高层会话/资源装配。使用哪个 API 时注明所属包。
 - `Agent` 内存转录与应用数据库持久化不同；不可把 `agent.state.messages` 当作自动持久化会话。
 - faux provider 只验证确定性的控制流和事件，不验证真实模型会如何遵循提示词。
+- 教程当前安装 `pi-agent-core@0.87.1`；权威源码 checkout 的 `packages/agent` 当前为 `1.1.0`。本轮涉及的上下文转换契约在两边都已核对，版本新增的 Harness 行为暂不纳入基础章节。
 - `AgentHarness`、Pico、Facet 文档包含设计与交接内容；进入这些章节时必须重新核对当前实现与导出面。
 - 用户已有的未提交改动保持原样。本文件的状态表只描述所见文件，不代表 Git 已提交。
 

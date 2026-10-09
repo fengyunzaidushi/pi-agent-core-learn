@@ -24,11 +24,11 @@
 2. [Agent 的心智模型](lessons/01-agent-mental-model.md)
 3. [创建第一个 Agent](lessons/02-first-agent.md)
 4. [事件流与消息转录](lessons/03-events-and-transcript.md)
+5. [AgentTool 与工具调用](lessons/04-tools.md)
 
 ### 第二阶段：工具和上下文
 
-5. AgentTool 的类型、参数校验和执行边界
-6. `convertToLlm` 与 `transformContext`
+6. [`AgentMessage`、`convertToLlm` 与 `transformContext`](lessons/05-context-boundary.md)
 7. 多工具调用、并行执行、steering 和 follow-up
 8. 错误、取消、重试和 `finishTurn`
 
@@ -49,7 +49,7 @@
 ## 当前进度
 
 - 已建立课程骨架。
-- 已完成第一章和第二章的初稿。
+- 已完成第一至第五章的初稿。
 - 已加入离线 faux provider 示例，暂不需要真实 API Key。
 - 后续章节会在完成源码追踪和实验后再加入。
 
@@ -63,6 +63,12 @@ npm run lesson:01
 ```
 
 示例使用 `@earendil-works/pi-ai` 的 faux provider 返回确定性文本，因此不会产生真实模型请求或费用。
+
+## 运行上下文边界示例
+
+```bash
+npm run lesson:03
+```
 
 ## 源码对应关系
 
